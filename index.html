@@ -5,5 +5,23 @@
   </head>
   <body>
     <h1>Hello, World!</h1>
+    <div id="data-list">
+
+    </div>
+    <script>
+      fetch('http://192.168.56.104:8000/')
+        .then(response => response.json())
+        .then(data => {
+            const dataList = document.getElementById('data-list');
+            data.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.textContent = item;
+                dataList.appendChild(listItem);
+            });
+        })
+        .catch(error => {
+            console.error('Erreur :', error);
+        });
+    </script>
   </body>
 </html>
